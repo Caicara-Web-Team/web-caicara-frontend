@@ -1,3 +1,4 @@
+import Depoiments from "@/components/Depoiments";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import type { Metadata } from "next";
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body style={{margin:0, padding:0}} className={inter.className}>
         <Header/>
         {children}
+        <Depoiments/>
         <Footer/>
         </body>
     </html>
