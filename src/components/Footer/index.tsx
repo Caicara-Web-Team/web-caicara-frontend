@@ -4,11 +4,21 @@ import { Input } from "antd";
 
 export default function Footer() {
   return (
-    <div style={styles.container}>
+    <div style={{
+      backgroundColor: "#FEAD04",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center"
+    }}>
       <div style={styles.mainStyle}>
         <div style={styles.text.mainContainer}>
           <p style={styles.text.title}>Bem-Vindo À Cooperativa Caiçara!</p>
-          <p style={styles.text.container}>
+          <p style={{
+            color: "#fff",
+            width: "300px",
+            textAlign: "start"
+          }}>
             Somos uma empresa comprometida em fornecer
             aos nossos clientes uma experiência de
             compra excepcional, onde qualidade,
@@ -25,7 +35,10 @@ export default function Footer() {
           <Input size="large" placeholder="Email..." />
         </div>
         <div>
-          <ul style={styles.list}>
+          <ul style={{
+            display: "flex",
+            flexDirection: "column",
+          }}>
             <li style={styles.list.item}>Inicio</li>
             <li style={styles.list.item}>Quem Somos</li>
             <li style={styles.list.item}>Produtos</li>
@@ -44,12 +57,10 @@ export default function Footer() {
 const styles = {
   mainStyle: {
     display: "flex",
-    justifyContent:"space-around",
+    justifyContent: "space-around",
     alignItems: "center",
   },
   list: {
-    display: "flex",
-    flexDirection: "column",
     item: {
       listStyle: "none",
       margin: "0 8px",
@@ -70,26 +81,19 @@ const styles = {
       color: "#fff",
     },
     container: {
-      color: "#fff",
-      width: "300px",
-      textAlign:"start"
+
     },
     mainContainer: {
       marginTop: "64px"
     }
   },
-  container:{
-    backgroundColor: "#FEAD04",
-    display:"flex",
-    flexDirection:"column",
-    alignIntems:"center",
-    textAlign:"center"
+  container: {
   },
-  link:{
-    textDecoration:"None",
+  link: {
+    textDecoration: "None",
     fontSize: "15px",
     color: "#ffff",
     margin: "32px 0",
-    
+
   }
 }
