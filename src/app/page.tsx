@@ -14,7 +14,10 @@ export default function Home() {
   const [value, setValue] = useState("MAIS VENDIDOS")
 
   return (
-    <div className={poppins.className}>
+    <div style={{
+      padding:"0 128px 128px",
+      
+    }} className={poppins.className}>
       <div style={styles.MainContainer}>
         <div>
           <h1 style={styles.PageTitle}>Explore nossa seleção fresca de peixes hoje mesmo!</h1>
@@ -36,8 +39,8 @@ export default function Home() {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div style={{ display: "flex", }}>
           <Button style={{
-            backgroundColor: "#FEAD04",
-            color: "#fff",
+            backgroundColor: value === "MAIS VENDIDOS" ? "#FEAD04":"transparent",
+            color: value === "MAIS VENDIDOS" ? "#fff":"#000",
             width: "200px",
             height: "87px",
             fontSize: "28px",
@@ -46,8 +49,8 @@ export default function Home() {
             onClick={() => setValue("MAIS VENDIDOS")}
           >Moluscos</Button>
           <Button style={{
-            backgroundColor: "#FEAD04",
-            color: "#fff",
+            backgroundColor: value === "PEIXES" ? "#FEAD04":"transparent",
+            color: value === "PEIXES" ? "#fff":"#000",
             width: "200px",
             height: "87px",
             fontSize: "28px",
@@ -58,8 +61,8 @@ export default function Home() {
             onClick={() => setValue("PEIXES")}
           >Peixes</Button>
           <Button style={{
-            backgroundColor: "#FEAD04",
-            color: "#fff",
+            backgroundColor: value === "MARISCOS" ? "#FEAD04":"transparent",
+            color: value === "MARISCOS" ? "#fff":"#000",
             width: "200px",
             height: "87px",
             fontSize: "28px",
@@ -76,7 +79,7 @@ export default function Home() {
             {products.products.moluscos.map((fish) => (
               <Col key={fish.title} span={8}>
                 <Card>
-                  <Image src={"/produtos/tilapia.svg"} width={462} height={260} alt="" />
+                  <Image src={fish.imgLink} width={462} height={260} alt="" />
                   <h3>{fish.title}</h3>
                   <p>{fish.shortDescription}  </p>
                 </Card>
@@ -89,7 +92,7 @@ export default function Home() {
             {products.products.peixes.map((fish) => (
               <Col key={fish.title} span={8}>
                 <Card>
-                  <Image src={"/produtos/tilapia.svg"} width={462} height={260} alt="" />
+                  <Image src={fish.imgLink} width={462} height={260} alt="" />
                   <h3>{fish.title}</h3>
                   <p>{fish.shortDescription}  </p>
                 </Card>
@@ -102,7 +105,7 @@ export default function Home() {
             {products.products.frutosDoMar.map((fish) => (
               <Col key={fish.title} span={8}>
                 <Card>
-                  <Image src={"/produtos/tilapia.svg"} width={462} height={260} alt="" />
+                  <Image src={fish.imgLink} width={462} height={260} alt="" />
                   <h3>{fish.title}</h3>
                   <p>{fish.shortDescription}  </p>
                 </Card>
@@ -125,7 +128,6 @@ const styles = {
   PageTitle: {
     fontSize: "64px",
     color: "#FEAD04",
-    padding: "128px 0 0 128px",
     width: 500
   },
   PageDescription: {
@@ -140,7 +142,6 @@ const styles = {
     height: "87px",
     fontSize: "28px",
     fontWeight: "bolder",
-    margin: "0 128px",
   },
   SecondContainer: {
     padding: "128px 0 0 64px",
@@ -168,6 +169,5 @@ const styles = {
     height: "87px",
     fontSize: "28px",
     fontWeight: "bolder",
-    margin: "0 128px",
   }
 }
