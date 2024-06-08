@@ -89,7 +89,7 @@ const styles = {
     textDecoration:"None",
     fontSize: "15px",
     color: "#ffff",
-    padding: "32px 0",
+    margin: "32px 0",
     
   }
 }
