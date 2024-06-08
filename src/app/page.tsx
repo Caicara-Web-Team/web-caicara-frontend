@@ -1,14 +1,20 @@
-import { Button, Carousel } from "antd";
+'use client';
+import { products } from "@/utils/products";
+import { Button, Card, Col, Row } from "antd";
+import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
+import { useState } from "react";
 
-const poppins = Poppins({ weight: "500", subsets: ["latin"] });
+
+const poppins = Poppins({ weight: ["500", "300"], subsets: ["latin"] });
 
 export default function Home() {
 
+  const [value, setValue] = useState("MAIS VENDIDOS")
 
   return (
-    <>
+    <div className={poppins.className}>
       <div style={styles.MainContainer}>
         <div>
           <h1 style={styles.PageTitle}>Explore nossa seleção fresca de peixes hoje mesmo!</h1>
@@ -23,29 +29,89 @@ export default function Home() {
       </div>
       <div style={{ height: "18px", backgroundColor: "#FEAD04" }}></div>
       <div style={{ height: "45px", backgroundColor: "#FF8500" }}></div>
-      <div style={styles.SecondContainer}>
-        <div>
-          <div style={styles.SubHeader}>
-            produção diária
-          </div>
-          <div>
-            <h1 style={styles.CarouselTitle}>
-              Mais Vendidos
-            </h1>
-            <p style={styles.CarouselDescription}>
-              A produção diária na nossa fábrica. novas práticas de gestão de qualidade.
-            </p>
-          </div>
-          <div>
-            <Button style={styles.CarouselButton}>
-              Catálogo
-            </Button>
-          </div>
-        </div>
-        <div>
+      <div>
+        <h2 style={{ color: "#FEAD04", textAlign: "center", fontWeight: "300", fontSize: 45 }}>NOSSOS PRODUTOS</h2>
+      </div>
+      <br />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", }}>
+          <Button style={{
+            backgroundColor: "#FEAD04",
+            color: "#fff",
+            width: "200px",
+            height: "87px",
+            fontSize: "28px",
+            fontWeight: "bolder"
+          }}
+            onClick={() => setValue("MAIS VENDIDOS")}
+          >Moluscos</Button>
+          <Button style={{
+            backgroundColor: "#FEAD04",
+            color: "#fff",
+            width: "200px",
+            height: "87px",
+            fontSize: "28px",
+            fontWeight: "bolder",
+            margin: "0 32px"
+
+          }}
+            onClick={() => setValue("PEIXES")}
+          >Peixes</Button>
+          <Button style={{
+            backgroundColor: "#FEAD04",
+            color: "#fff",
+            width: "200px",
+            height: "87px",
+            fontSize: "28px",
+            fontWeight: "bolder",
+          }}
+            onClick={() => setValue("MARISCOS")}
+          >Mariscos</Button>
         </div>
       </div>
-    </>
+      <br />
+      <Row style={{ justifyContent: "center" }} gutter={[16, 24]}>
+        {value === "MAIS VENDIDOS" && (
+          <>
+            {products.products.moluscos.map((fish) => (
+              <Col key={fish.title} span={8}>
+                <Card>
+                  <Image src={"/produtos/tilapia.svg"} width={462} height={260} alt="" />
+                  <h3>{fish.title}</h3>
+                  <p>{fish.shortDescription}  </p>
+                </Card>
+              </Col>
+            ))}
+          </>
+        )}
+        {value === "PEIXES" && (
+          <>
+            {products.products.peixes.map((fish) => (
+              <Col key={fish.title} span={8}>
+                <Card>
+                  <Image src={"/produtos/tilapia.svg"} width={462} height={260} alt="" />
+                  <h3>{fish.title}</h3>
+                  <p>{fish.shortDescription}  </p>
+                </Card>
+              </Col>
+            ))}
+          </>
+        )}
+        {value === "MARISCOS" && (
+          <>
+            {products.products.frutosDoMar.map((fish) => (
+              <Col key={fish.title} span={8}>
+                <Card>
+                  <Image src={"/produtos/tilapia.svg"} width={462} height={260} alt="" />
+                  <h3>{fish.title}</h3>
+                  <p>{fish.shortDescription}  </p>
+                </Card>
+              </Col>
+            ))}
+          </>
+        )}
+      </Row>
+    </div>
   );
 }
 
